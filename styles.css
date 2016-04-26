@@ -66,7 +66,7 @@ body {
 	background-color: yellow;
 }
 #air, #wave, #aquarium {
-  border: red 2px solid;
+  /*border: red 2px solid;*/
 }
 #air {
 	height: 20%;
@@ -75,14 +75,14 @@ body {
 	background-color: #B7D3C8;
 }
 #wave {
-	height: 20%;
+	height: 10%;
 	background-image: url(img/waves@2x.png);
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left top;
 }
 #aquarium {
-	height: 60%;
+	height: 70%;
 	background-color: #002727;
 	position: relative;
 }
