@@ -1,5 +1,5 @@
 var Fish = function() {
-  this.$node = $('<div class="fish">FISH</div>');
+  this.$node = $('<div class="fish"></div>');
   this.width = 50;
   this.height = 37;
 
@@ -39,7 +39,6 @@ Fish.prototype.heightAvailable = function() {
 }
 
 Fish.prototype.move = function(interval) {
-  
   // change direction on edge collison
   var currentTransform = this.$node.css('transform');
   if(this.left() < 0) {
@@ -54,19 +53,9 @@ Fish.prototype.move = function(interval) {
   this.bobCycle += this.bobSpeed * interval;
   this.bobOffset = this.bobHeight * Math.sin(this.bobCycle);
 
+  // update x and repaint
   this.x += this.direction * this.speed * interval;
   this.repaint();
-};
-
-Fish.prototype.bob = function() {
-  // bobbing effect
-  
-  this.top = this.bobHeight * Math.sin(this.bobCycle);
-  //var bobPrevHeight = this.bobOffset;
-
-
-  //this.bobOffset = this.bobHeight * Math.sin(this.bobCycle);
-  //this.top += this.bobOffset - bobPrevHeight;
 };
 
 Fish.prototype.repaint = function() {
