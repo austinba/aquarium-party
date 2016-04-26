@@ -22,6 +22,6 @@ $(document).ready(function(){
 
 var refreshScreen = function(){
   window.fishes.forEach(function(fish){
-    fish.move(1/window.frameRate);
+    fish.tick(1/window.frameRate);
   });
 }

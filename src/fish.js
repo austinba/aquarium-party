@@ -16,9 +16,6 @@ var Fish = function() {
   this.bobOffset= 0;
 
   this.$node.addClass('fish-bob' + Math.floor(Math.random() * 3 + 1));
-  if(this.direction < 0) {
-    this.$node.css('transform', 'scaleX(-1)');
-  }
 
   this.repaint();
 };
@@ -42,15 +39,13 @@ Fish.prototype.heightAvailable = function() {
   return ($aquarium.height() - this.height);
 }
 
-Fish.prototype.move = function(interval) {
+Fish.prototype.tick = function(interval) {
   // change direction on edge collison
   var currentTransform = this.$node.css('transform');
   if(this.left() < 0) {
     this.direction = 1;
-    this.$node.css('transform', 'scaleX(1)');
   } else if(this.left() > this.widthAvailable()) {
     this.direction = -1;
-    this.$node.css('transform', 'scaleX(-1)');
   }
 
   // bob
@@ -58,8 +53,23 @@ Fish.prototype.move = function(interval) {
   this.bobOffset = this.bobHeight * Math.sin(this.bobCycle);
 
   // update x and repaint
-  this.x += this.direction * this.speed * interval;
+  this.moveXY(this.direction * this.speed * interval, 0);
   this.repaint();
+};
+
+Fish.prototype.moveXY = function(xIncr, yIncr) {
+  this.x += xIncr;
+  this.y += yIncr;
+  // set fish facing direction
+  if (xIncr < 0) {
+    if(!this.$node.hasClass('facingLeft')) {
+      this.$node.addClass('facingLeft');
+    }
+    //this.$node.css('transform', 'scaleX(-1)');
+  } else {
+    this.$node.removeClass('facingLeft');
+    //this.$node.css('transform', 'scaleX(1)');
+  }
 };
 
 Fish.prototype.repaint = function() {
