@@ -23,6 +23,10 @@ var Fish = function() {
   this.repaint();
 };
 
+Fish.prototype.distanceTo = function(fish) {
+  return Math.sqrt( Math.pow((this.x - fish.x), 2) + Math.pow((this.y - fish.y), 2) );
+}
+
 Fish.prototype.left = function() {
   return this.x - (this.width / 2);
 };
