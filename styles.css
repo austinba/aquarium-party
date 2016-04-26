@@ -59,19 +59,28 @@ html, body {
 }
 body {
 }
+
+/*
+  FISH
+*/
+
 .fish {
 	width: 100px;
-	height: 30px;
+	height: 75px;
 	position: absolute;
-	background-color: yellow;
+	background-image: url(img/fish.png);
+	background-size: 100% 100%;
 }
+
 /*
 .fish-bob1 {
 	animation: bob1 5s linear infinite;
 }
+
 .fish-bob2 {
 	animation: bob2 5s linear infinite;
 }
+
 .fish-bob3 {
 	animation: bob3 5s linear infinite;
 }*/
@@ -98,6 +107,7 @@ body {
 }
 
 /*
+
 @keyframes bob1 {
 	0% {transform: translateY(0);}
 	25% {transform: translateY(5px);}
@@ -105,6 +115,7 @@ body {
 	75% {transform: translateY(-5px);}
 	100% {transform: translateY(0);}
 }
+
 @keyframes bob2 {
 	0% {transform: translateY(-5px);}
 	25% {transform: translateY(0);}
@@ -112,6 +123,7 @@ body {
 	75% {transform: translateY(0);}
 	100% {transform: translateY(-5px);}
 }
+
 @keyframes bob3 {
 	0% {transform: translateY(5px);}
 	25% {transform: translateY(0);}
@@ -120,6 +132,34 @@ body {
 	100% {transform: translateY(5px);}
 }
 */
+
+/*
+  AQUARIUM
+ */
+
+#air {
+	height: 20%;
+}
+#air, #wave {
+	background-color: #B7D3C8;
+}
+#wave {
+	height: 10%;
+	background-image: url(img/waves@2x.png);
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+#aquarium {
+	height: 70%;
+	background-color: #002727;
+	position: relative;
+}
+
+/*
+	TEST DIV
+ */
+
 #toy {
 	position: absolute;
 	height: 50px;

@@ -1,7 +1,7 @@
 var Fish = function() {
   this.$node = $('<div class="fish">FISH</div>');
-  this.width = 100;
-  this.height = 30;
+  this.width = 50;
+  this.height = 37;
 
   this.x = this.widthAvailable() * Math.random() + this.width / 2;
   this.y = this.heightAvailable() * Math.random() + this.height / 2;
