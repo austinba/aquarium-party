@@ -65,6 +65,7 @@ body {
 	position: absolute;
 	background-color: yellow;
 }
+/*
 .fish-bob1 {
 	animation: bob1 5s linear infinite;
 }
@@ -73,7 +74,7 @@ body {
 }
 .fish-bob3 {
 	animation: bob3 5s linear infinite;
-}
+}*/
 #air, #wave, #aquarium {
   /*border: red 2px solid;*/
 }
@@ -95,6 +96,8 @@ body {
 	background-color: #002727;
 	position: relative;
 }
+
+/*
 @keyframes bob1 {
 	0% {transform: translateY(0);}
 	25% {transform: translateY(5px);}
@@ -116,7 +119,7 @@ body {
 	75% {transform: translateY(0);}
 	100% {transform: translateY(5px);}
 }
-
+*/
 #toy {
 	position: absolute;
 	height: 50px;
