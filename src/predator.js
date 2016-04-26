@@ -5,6 +5,8 @@ var Predator = function() {
   this.height *= 2;
   this.width *= 2;
 
+  this.speed = 100 + 4 * (1 - Math.random()*2); // pixels per second
+
   this.stomach = 0;
   this.hungry = true;
   this.chasing;
@@ -17,25 +19,17 @@ Predator.prototype = Object.create(Fish.prototype);
 Predator.prototype.constructor = Predator;
 
 Predator.prototype.move = function(interval) {
-  if (this.hungry) {
-    // determine next fish to chase
-    if (!this.chasing || window.fishes.includes(this.chasing)) {
+
+  if (this.hungry && window.fishes.length > 1) { // fix this later to check count of prey fish
+    if (!this.chasing || window.fishes.indexOf(this.chasing)) {
       this.chasing = this.findNearestFish();  
     }
 
-    // determine direction
-    var direction;
-
-    if (this.x === this.chasing.x) {
-      direction = (this.chasing.y > this.y) ? 0 : Math.PI;
-    } else {
-      direction = Math.atan( (this.chasing.y - this.y) / (this.chasing.x - this.x) );
-    }
-
-    console.log(direction * 180 / Math.PI);
-
-    this.x -= Math.cos(direction) * this.speed * interval;
-    this.y -= Math.sin(direction) * this.speed * interval;
+    var chaseDistance = this.distanceTo(this.chasing);
+    var deltaX = (this.chasing.x - this.x) / chaseDistance * this.speed * interval;
+    var deltaY = (this.chasing.y - this.y) / chaseDistance * this.speed * interval;
+    this.x += deltaX;
+    this.y += deltaY;
 
     if (this.distanceTo(this.chasing) < 3) {
       this.eat(this.chasing);
@@ -48,11 +42,12 @@ Predator.prototype.move = function(interval) {
 };
 
 Predator.prototype.eat = function(prey) {
-  this.hungry = false;
+  // this.hungry = false;
   
   var fishIndex = window.fishes.indexOf(prey);
   prey.$node.remove();
-  // window.fishes = window.fishes.splice(fishIndex, 1);
+  window.fishes.splice(fishIndex, 1);
+  console.log(window.fishes);
 };
 
 Predator.prototype.findNearestFish = function() {

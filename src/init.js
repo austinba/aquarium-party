@@ -4,7 +4,7 @@ $(document).ready(function(){
   window.$aquarium = $('#aquarium');
 
   // pre-populate with Fish
-  for(var i = 0; i < 1; i++) {
+  for(var i = 0; i < 10; i++) {
     window.fishes.push(new Fish);
   }
 
