@@ -59,24 +59,59 @@ html, body {
 }
 body {
 }
+
+/*
+  FISH
+*/
+
 .fish {
 	width: 100px;
-	height: 30px;
+	height: 75px;
 	position: absolute;
-	background-color: yellow;
+	background-image: url(img/fish.png);
+	background-size: 100% 100%;
 }
+
 .fish-bob1 {
 	animation: bob1 5s linear infinite;
 }
+
 .fish-bob2 {
 	animation: bob2 5s linear infinite;
 }
+
 .fish-bob3 {
 	animation: bob3 5s linear infinite;
 }
-#air, #wave, #aquarium {
-  /*border: red 2px solid;*/
+
+@keyframes bob1 {
+	0% {transform: translateY(0);}
+	25% {transform: translateY(5px);}
+	50% {transform: translateY(0);}
+	75% {transform: translateY(-5px);}
+	100% {transform: translateY(0);}
 }
+
+@keyframes bob2 {
+	0% {transform: translateY(-5px);}
+	25% {transform: translateY(0);}
+	50% {transform: translateY(5px);}
+	75% {transform: translateY(0);}
+	100% {transform: translateY(-5px);}
+}
+
+@keyframes bob3 {
+	0% {transform: translateY(5px);}
+	25% {transform: translateY(0);}
+	50% {transform: translateY(-5px);}
+	75% {transform: translateY(0);}
+	100% {transform: translateY(5px);}
+}
+
+/*
+  AQUARIUM
+ */
+
 #air {
 	height: 20%;
 }
@@ -95,27 +130,10 @@ body {
 	background-color: #002727;
 	position: relative;
 }
-@keyframes bob1 {
-	0% {transform: translateY(0);}
-	25% {transform: translateY(5px);}
-	50% {transform: translateY(0);}
-	75% {transform: translateY(-5px);}
-	100% {transform: translateY(0);}
-}
-@keyframes bob2 {
-	0% {transform: translateY(-5px);}
-	25% {transform: translateY(0);}
-	50% {transform: translateY(5px);}
-	75% {transform: translateY(0);}
-	100% {transform: translateY(-5px);}
-}
-@keyframes bob3 {
-	0% {transform: translateY(5px);}
-	25% {transform: translateY(0);}
-	50% {transform: translateY(-5px);}
-	75% {transform: translateY(0);}
-	100% {transform: translateY(5px);}
-}
+
+/*
+	TEST DIV
+ */
 
 #toy {
 	position: absolute;
