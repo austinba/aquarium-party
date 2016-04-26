@@ -1,7 +1,7 @@
 var Fish = function() {
-  this.$node = $('<div class="fish">FISH</div>');
-  this.width = 100;
-  this.height = 30;
+  this.$node = $('<div class="fish"></div>');
+  this.width = 50;
+  this.height = 37;
   this.speed = 50 + 4 * (1 - Math.random()*2); // pixels per second
   this.direction = Math.random() < 0.5 ? -1 : 1;
   this.$node.addClass('fish-bob' + Math.floor(Math.random() * 3 + 1));
