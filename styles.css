@@ -84,6 +84,11 @@ body {
 	z-index: 5;
 }
 
+.hungry {
+	-webkit-filter: hue-rotate(100deg);
+	filter: hue-rotate(100deg);
+}
+
 .facingLeft {
 	transform: scaleX(-1);
 }
@@ -169,17 +174,4 @@ body {
 	height: 70%;
 	background-color: #002727;
 	position: relative;
-}
-
-/*
-	TEST DIV
- */
-
-#toy {
-	position: absolute;
-	height: 50px;
-	width: 50px;
-	left: 200px;
-	top: 100px;
-	background-color: green;
 }

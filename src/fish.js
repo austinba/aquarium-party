@@ -62,9 +62,7 @@ Fish.prototype.moveXY = function(xIncr, yIncr) {
   this.y += yIncr;
   // set fish facing direction
   if (xIncr < 0) {
-    if(!this.$node.hasClass('facingLeft')) {
-      this.$node.addClass('facingLeft');
-    }
+    this.$node.addClass('facingLeft');
     //this.$node.css('transform', 'scaleX(-1)');
   } else {
     this.$node.removeClass('facingLeft');
