@@ -41,6 +41,10 @@ Fish.prototype.heightAvailable = function() {
 
 Fish.prototype.tick = function(interval) {
   // change direction on edge collison
+  if(this.$node === undefined) {
+    console.log(this);
+    debugger;
+  }
   var currentTransform = this.$node.css('transform');
   if(this.left() < 0) {
     this.direction = 1;

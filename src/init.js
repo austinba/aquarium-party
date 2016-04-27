@@ -8,10 +8,10 @@ $(document).ready(function(){
     window.fishes.push(new Fish);
   }
 
-  // // pre-populate with ScatterFish
-  // for(var i = 0; i < 100; i++) {
-  //   window.fishes.push(new ScatterFish);
-  // }
+  // pre-populate with ScatterFish
+  for(var i = 0; i < 50; i++) {
+    window.fishes.push(new ScatterFish);
+  }
 
   // pre-populate with Predator
   for(var i = 0; i < 5; i++) {

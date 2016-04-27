@@ -22,7 +22,12 @@ Predator.prototype.constructor = Predator;
 Predator.prototype.tick = function(interval) {
   if (this.hungry && window.fishes.length > 1) { // fix this later to check count of prey fish
     if (!this.chasing || window.fishes.indexOf(this.chasing)) {
-      this.chasing = this.findNearestFish();  
+      this.chasing = this.findNearestFish(Fish);
+      if(!this.chasing) {
+        this.setHungry(false);
+        this.tick(interval);
+        return;
+      }
     }
 
     var chaseDistance = this.distanceTo(this.chasing);
@@ -62,14 +67,14 @@ Predator.prototype.eat = function(prey) {
 
 
 
-Predator.prototype.findNearestFish = function() {
+Predator.prototype.findNearestFish = function(fishType) {
   var nearestDistance = Number.POSITIVE_INFINITY;
   var nearestFish;
 
   for (var i = 0; i < window.fishes.length; i++) {
     var distance = this.distanceTo(fishes[i]);
 
-    if (distance < nearestDistance && fishes[i] !== this) {
+    if (distance < nearestDistance && fishes[i] !== this && fishes[i].constructor === fishType) {
       nearestDistance = distance;
       nearestFish = fishes[i];
     }
