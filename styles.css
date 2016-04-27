@@ -71,10 +71,8 @@ body {
 	position: absolute;
 	background-image: url(img/fish.png);
 	background-size: 100% 100%;
-
 	z-index: 10;
 }
-
 .predator {
 	background-image: url(img/fish.png);
 
@@ -84,50 +82,42 @@ body {
 	z-index: 5;
 }
 
+.scatterfish {
+	background-image: url(img/fish.png);
+
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+
+	z-index: 20;
+	opacity: .4;
+}
+.newfish {
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+}
 .hungry {
 	-webkit-filter: hue-rotate(100deg);
 	filter: hue-rotate(100deg);
 }
-
-.facingLeft {
-	transform: scaleX(-1);
+#menu {
+	position: absolute;
+	width: 100%;
+	text-align: right;
+	padding: 10px;
 }
-
-.lookingUp {
-	transform: rotate(-45deg);
+#menu a {
+	display: inline-block;
+	padding: 5px;
+	border: 2px solid #002727;
 }
-
-.lookingDown {
-	transform: rotate(45deg);
-}
-
-#air, #wave, #aquarium {
-  /*border: red 2px solid;*/
-}
-#air {
-	height: 20%;
-}
-#air, #wave {
-	background-color: #B7D3C8;
-}
-#wave {
-	height: 10%;
-	background-image: url(img/waves@2x.png);
-	background-size: auto 100%;
-	background-repeat: repeat-x;
-	background-position: left top;
-}
-#aquarium {
-	height: 70%;
+#menu a:hover {
 	background-color: #002727;
-	position: relative;
+	color: #FFF;
+	cursor: pointer;
 }
-
-
 /*
   AQUARIUM
  */
-
 #air {
 	height: 20%;
 }
@@ -136,7 +126,7 @@ body {
 }
 #wave {
 	height: 10%;
-	background-image: url(img/waves@2x.png);
+	background-image: url(img/waves@2x.gc.png);
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left top;

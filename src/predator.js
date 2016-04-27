@@ -8,9 +8,10 @@ var Predator = function(preventNewFishEffect) {
   this.speed = 100 + 4 * (1 - Math.random()*2); // pixels per second
 
   this.stomach = 0;
-  this.setHungry(false);
-  this.hungryAgain = 3 * 1000;
+  this.hungryAgain = (5 * Math.random() + 1) * 1000;
   this.chasing;
+
+  this.setHungry(false);
 
   this.repaint();
 }
@@ -51,6 +52,9 @@ Predator.prototype.setHungry = function(isHungry) {
     this.$node.addClass('hungry');
   } else {
     this.$node.removeClass('hungry');
+    setTimeout(function() {
+      this.setHungry(true);
+    }.bind(this), this.hungryAgain);
   }
 }
 
@@ -59,10 +63,6 @@ Predator.prototype.eat = function(prey) {
   prey.$node.remove();
   window.fishes.splice(fishIndex, 1);
   this.setHungry(false);
-
-  setTimeout(function() {
-    this.setHungry(true);
-  }.bind(this), this.hungryAgain);
 };
 
 
