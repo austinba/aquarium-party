@@ -5,7 +5,7 @@ var Predator = function(preventNewFishEffect) {
   this.height *= 2;
   this.width *= 2;
 
-  this.speed = 100 + 4 * (1 - Math.random()*2); // pixels per second
+  this.speed = 100 + 50 * (1 - Math.random()*2); // pixels per second
 
   this.stomach = 0;
   this.hungryAgain = (5 * Math.random() + 1) * 1000;
@@ -53,7 +53,11 @@ Predator.prototype.setHungry = function(isHungry) {
   } else {
     this.$node.removeClass('hungry');
     setTimeout(function() {
-      this.setHungry(true);
+      if(this.findNearestFish(Fish) !== undefined) {
+        this.setHungry(true);
+      } else {
+        this.setHungry(false);
+      }
     }.bind(this), this.hungryAgain);
   }
 }

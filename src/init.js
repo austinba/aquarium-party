@@ -1,6 +1,6 @@
 $(document).ready(function(){
   window.fishes = [];
-  window.frameRate = 20;
+  window.frameRate = 30;
   window.$aquarium = $('#aquarium');
 
   // populate with fish
@@ -19,21 +19,20 @@ var refreshScreen = function(){
 };
 
 var populateFish = function() {
-  // pre-populate with Fish
   for(var i = 0; i < 10; i++) {
     addFish(Fish, true);
   }
-
-  // pre-populate with ScatterFish
-  for(var i = 0; i < 50; i++) {
+  for(var i = 0; i < 100; i++) {
     addFish(ScatterFish, true);
   }
-
-  // pre-populate with Predator
   for(var i = 0; i < 2; i++) {
     addFish(Predator, true);
   }
-
+  var addFishRandomly = function(skipFirst){
+    if(!skipFirst) addFish(Fish);
+    setTimeout(addFishRandomly, Math.random() * 10000);
+  };
+  addFishRandomly(true);
   // add all fish to screen
   fishes.forEach(function(fish) {
     fish.$node.appendTo('#aquarium');
@@ -41,7 +40,6 @@ var populateFish = function() {
 };
 
 var addFish = function(fishType, preventNewFishEffect) {
-  console.log(preventNewFishEffect, !!preventNewFishEffect);
   var fish = new fishType(!!preventNewFishEffect);
   window.fishes.push(fish);
   fish.$node.appendTo('#aquarium');

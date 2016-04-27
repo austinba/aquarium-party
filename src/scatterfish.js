@@ -17,13 +17,11 @@ ScatterFish.prototype.tick = function(interval) {
 	var predator = this.findNearestFish(Predator);
  	var distance = this.distanceTo(predator);
 
-
-
  	if (!this.scattering) {
  		if (distance < this.scatterActivatingDistance) {
  			this.scattering = true;
  			this.scatterDirection = Math.atan2(this.y - predator.y, this.x - predator.x);
- 			this.scatterTimeFrame = 5000 * Math.random();
+ 			this.scatterTimeFrame = 1000 * Math.random();
  			setTimeout(function() {
  				this.scattering = false;
  			}.bind(this), this.scatterTimeFrame);
