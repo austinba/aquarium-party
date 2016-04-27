@@ -64,21 +64,3 @@ Predator.prototype.eat = function(prey) {
   window.fishes.splice(fishIndex, 1);
   this.setHungry(false);
 };
-
-
-
-Predator.prototype.findNearestFish = function(fishType) {
-  var nearestDistance = Number.POSITIVE_INFINITY;
-  var nearestFish;
-
-  for (var i = 0; i < window.fishes.length; i++) {
-    var distance = this.distanceTo(fishes[i]);
-
-    if (distance < nearestDistance && fishes[i] !== this && fishes[i].constructor === fishType) {
-      nearestDistance = distance;
-      nearestFish = fishes[i];
-    }
-  }
-
-  return nearestFish;
-};

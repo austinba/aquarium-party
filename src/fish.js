@@ -3,8 +3,8 @@ var Fish = function(preventNewFishEffect) {
   this.width = 50;
   this.height = 37;
 
-  this.x = this.widthAvailable() * Math.random() + this.width / 2;
-  this.y = this.heightAvailable() * Math.random() + this.height / 2;
+  this.x = ($aquarium.width() - this.width) * Math.random() + this.width / 2;
+  this.y = ($aquarium.height() - this.height) * Math.random() + this.height / 2;
 
   this.speed = 50 + 4 * (1 - Math.random()*2); // pixels per second
   this.direction = Math.random() < 0.5 ? -1 : 1;
@@ -42,12 +42,28 @@ Fish.prototype.heightAvailable = function() {
   return ($aquarium.height() - this.height);
 }
 
+Fish.prototype.findNearestFish = function(fishType) {
+  var nearestDistance = Number.POSITIVE_INFINITY;
+  var nearestFish;
+
+  for (var i = 0; i < window.fishes.length; i++) {
+    var distance = this.distanceTo(fishes[i]);
+
+    if (distance < nearestDistance && fishes[i] !== this && fishes[i].constructor === fishType) {
+      nearestDistance = distance;
+      nearestFish = fishes[i];
+    }
+  }
+
+  return nearestFish;
+};
+
 Fish.prototype.tick = function(interval) {
   // change direction on edge collison
   var currentTransform = this.$node.css('transform');
-  if(this.left() < 0) {
+  if(this.distanceFromBounds().left < 0) {
     this.direction = 1;
-  } else if(this.left() > this.widthAvailable()) {
+  } else if(this.distanceFromBounds().right < 0) {
     this.direction = -1;
   }
 
@@ -61,6 +77,7 @@ Fish.prototype.tick = function(interval) {
 };
 
 Fish.prototype.moveXY = function(xIncr, yIncr) {
+
   this.x += xIncr;
   this.y += yIncr;
 
@@ -77,7 +94,14 @@ Fish.prototype.moveXY = function(xIncr, yIncr) {
 
   this.$node.css('transform', transform);
 };
-
+Fish.prototype.distanceFromBounds = function() {
+  return {
+    top: this.y - this.height / 2,
+    bottom: $aquarium.height() - (this.y + this.height / 2),
+    left: this.x - this.width / 2,
+    right: $aquarium.width() - (this.x + this.width / 2),
+  };
+};
 Fish.prototype.repaint = function() {
   this.$node.css('width', this.width);
   this.$node.css('height', this.height);
