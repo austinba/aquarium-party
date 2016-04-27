@@ -1,5 +1,5 @@
-var Fish = function() {
-  this.$node = $('<div class="fish"></div>');
+var Fish = function(preventNewFishEffect) {
+;  this.$node = $('<div class="fish"></div>');
   this.width = 50;
   this.height = 37;
 
@@ -16,7 +16,10 @@ var Fish = function() {
   this.bobOffset= 0;
 
   this.$node.addClass('fish-bob' + Math.floor(Math.random() * 3 + 1));
-
+  if(!preventNewFishEffect) this.$node.addClass('newfish');
+  setTimeout(function(){
+    this.$node.removeClass('newfish');
+  }.bind(this), 500);
   this.repaint();
 };
 
@@ -41,10 +44,6 @@ Fish.prototype.heightAvailable = function() {
 
 Fish.prototype.tick = function(interval) {
   // change direction on edge collison
-  if(this.$node === undefined) {
-    console.log(this);
-    debugger;
-  }
   var currentTransform = this.$node.css('transform');
   if(this.left() < 0) {
     this.direction = 1;

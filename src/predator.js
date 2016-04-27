@@ -1,5 +1,5 @@
-var Predator = function() {
-  Fish.call(this);
+var Predator = function(preventNewFishEffect) {
+  Fish.call(this, preventNewFishEffect);
   this.$node.addClass('predator');
 
   this.height *= 2;
@@ -8,7 +8,7 @@ var Predator = function() {
   this.speed = 100 + 4 * (1 - Math.random()*2); // pixels per second
 
   this.stomach = 0;
-  this.setHungry(true);
+  this.setHungry(false);
   this.hungryAgain = 3 * 1000;
   this.chasing;
 
