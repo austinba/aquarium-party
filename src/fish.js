@@ -60,14 +60,19 @@ Fish.prototype.tick = function(interval) {
 Fish.prototype.moveXY = function(xIncr, yIncr) {
   this.x += xIncr;
   this.y += yIncr;
+
+  var transform = '';
+
+  // facing up/down
+  var rotation = Math.atan(yIncr / xIncr) * 180 / Math.PI;
+  transform += 'rotate(' + rotation + 'deg) ';
+
   // set fish facing direction
   if (xIncr < 0) {
-    this.$node.addClass('facingLeft');
-    //this.$node.css('transform', 'scaleX(-1)');
-  } else {
-    this.$node.removeClass('facingLeft');
-    //this.$node.css('transform', 'scaleX(1)');
+    transform += 'scaleX(-1) ';
   }
+
+  this.$node.css('transform', transform);
 };
 
 Fish.prototype.repaint = function() {
