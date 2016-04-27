@@ -53,7 +53,6 @@ Predator.prototype.eat = function(prey) {
   var fishIndex = window.fishes.indexOf(prey);
   prey.$node.remove();
   window.fishes.splice(fishIndex, 1);
-  console.log(window.fishes);
   this.setHungry(false);
 
   setTimeout(function() {
