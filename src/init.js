@@ -3,25 +3,12 @@ $(document).ready(function(){
   window.frameRate = 20;
   window.$aquarium = $('#aquarium');
 
-  // pre-populate with Fish
-  for(var i = 0; i < 10; i++) {
-    window.fishes.push(new Fish);
-  }
+  // populate with fish
+  populateFish();
 
-  // pre-populate with ScatterFish
-  for(var i = 0; i < 50; i++) {
-    window.fishes.push(new ScatterFish);
-  }
-
-  // pre-populate with Predator
-  for(var i = 0; i < 5; i++) {
-    window.fishes.push(new Predator);
-  }
-
-  fishes.forEach(function(fish) {
-    fish.$node.appendTo('#aquarium');
-  })
-
+  $('.addFish').click(addFish.bind(this, Fish));
+  $('.addPredator').click(addFish.bind(this, Predator));
+  // start tick
   setInterval(refreshScreen, 1000 / window.frameRate);
 });
 
@@ -29,4 +16,32 @@ var refreshScreen = function(){
   window.fishes.forEach(function(fish){
     fish.tick(1/window.frameRate);
   });
+};
+
+var populateFish = function() {
+  // pre-populate with Fish
+  for(var i = 0; i < 10; i++) {
+    addFish(Fish);
+  }
+
+  // pre-populate with ScatterFish
+  for(var i = 0; i < 50; i++) {
+    addFish(ScatterFish);
+  }
+
+  // pre-populate with Predator
+  for(var i = 0; i < 5; i++) {
+    addFish(Predator);
+  }
+
+  // add all fish to screen
+  fishes.forEach(function(fish) {
+    fish.$node.appendTo('#aquarium');
+  });
+};
+
+var addFish = function(fishType) {
+  var fish = new fishType();
+  window.fishes.push(fish);
+  fish.$node.appendTo('#aquarium');
 }
