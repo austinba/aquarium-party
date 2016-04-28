@@ -1,5 +1,5 @@
 var Fish = function(preventNewFishEffect) {
-;  this.$node = $('<div class="fish"></div>');
+  this.$node = $('<div class="fish"></div>');
   this.width = 50;
   this.height = 37;
 
