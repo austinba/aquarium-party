@@ -17,8 +17,6 @@
 
 * Swim left and right
 
-<img src="img/fish.png" style="width: 100px;">
-
 ### Predator (Delegates to Fish)
 
 * Swim left and right
@@ -26,11 +24,7 @@
 * Move towards Fish when hungry
 * "Eat" Fish
 
-<img src="img/fish.png" style="width: 200px; -webkit-filter: hue-rotate(300deg); filter: hue-rotate(300deg);">
-
 ### ScatterFish (Delegates to Fish)
 
 * Swim left and right
 * Scatter away from hungry Predator
-
-<img src="img/fish.png" style="width: 30px; -webkit-filter: grayscale(100%); filter: grayscale(100%)">
