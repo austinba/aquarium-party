@@ -14,10 +14,9 @@ ScatterFish.prototype = Object.create(Fish.prototype);
 ScatterFish.prototype.constructor = ScatterFish;
 
 ScatterFish.prototype.tick = function(interval) {
-	var predator = this.findNearestFish(Predator);
- 	var distance = this.distanceTo(predator);
-
  	if (!this.scattering) {
+    var predator = this.findNearestFish(Predator);
+    var distance = this.distanceTo(predator);
  		if (distance < this.scatterActivatingDistance) {
  			this.scattering = true;
  			this.scatterDirection = Math.atan2(this.y - predator.y, this.x - predator.x);

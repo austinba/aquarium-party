@@ -6,7 +6,7 @@ var Fish = function(preventNewFishEffect) {
   this.x = ($aquarium.width() - this.width) * Math.random() + this.width / 2;
   this.y = ($aquarium.height() - this.height) * Math.random() + this.height / 2;
 
-  this.speed = 50 + 4 * (1 - Math.random()*2); // pixels per second
+  this.speed = 35 + 4 * (1 - Math.random()*2); // pixels per second
   this.direction = Math.random() < 0.5 ? -1 : 1;
 
   // bobbing effect

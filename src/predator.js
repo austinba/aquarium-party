@@ -5,7 +5,7 @@ var Predator = function(preventNewFishEffect) {
   this.height *= 2;
   this.width *= 2;
 
-  this.speed = 100 + 50 * (1 - Math.random()*2); // pixels per second
+  this.speed = 70 + 35 * (1 - Math.random()*2); // pixels per second
 
   this.stomach = 0;
   this.hungryAgain = (5 * Math.random() + 1) * 1000;

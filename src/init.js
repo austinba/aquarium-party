@@ -1,6 +1,8 @@
 $(document).ready(function(){
   window.fishes = [];
-  window.frameRate = 30;
+  window.targetFrameRate = 30;
+  window.frameRate = targetFrameRate;
+  window.lastTenRefreshRates = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   window.$aquarium = $('#aquarium');
 
   // populate with fish
@@ -9,13 +11,28 @@ $(document).ready(function(){
   $('.addFish').click(addFish.bind(this, Fish, false));
   $('.addPredator').click(addFish.bind(this, Predator, false));
   // start tick
-  setInterval(refreshScreen, 1000 / window.frameRate);
+   setInterval(refreshScreen, 1000 / window.frameRate);
+  //refreshScreen();
 });
 
 var refreshScreen = function(){
+  //setTimeout(refreshScreen, 1000 / window.frameRate);
+  window.lastTenRefreshRates.unshift((new Date).getTime());
+  window.lastTenRefreshRates.pop();
+  var timeElapsed = (window.lastTenRefreshRates[0] - window.lastTenRefreshRates[9]) / 10;
+  console.log(1000 / timeElapsed, window.frameRate);
   window.fishes.forEach(function(fish){
     fish.tick(1/window.frameRate);
   });
+ // var timeElapsed = (new Date).getTime() - startTime;
+
+  //console.log(timeElapsed, 1000 / window.frameRate)
+  // if(timeElapsed > 1000 / window.frameRate && window.frameRate > 10) {
+  //   window.frameRate--;
+  // } else if(timeElapsed < 1000 / window.frameRate && window.frameRate < window.targetFrameRate) {
+  //   window.frameRate++;
+  // }
+  //console.log(window.frameRate);
 };
 
 var populateFish = function() {

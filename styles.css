@@ -135,7 +135,8 @@ body {
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left top;
-	margin-bottom: -1px;
+	/* margin-bottom: -1px;
+	margin-top: -2px; */
 }
 #aquarium {
 	height: 70%;
