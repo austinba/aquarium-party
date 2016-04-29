@@ -119,6 +119,9 @@ body {
 /*
   AQUARIUM
  */
+body {
+	background-color: #002727
+}
 #air {
 	height: 20%;
 }
