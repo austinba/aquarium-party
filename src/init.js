@@ -11,12 +11,12 @@ $(document).ready(function(){
   $('.addFish').click(addFish.bind(this, Fish, false));
   $('.addPredator').click(addFish.bind(this, Predator, false));
   // start tick
-   setInterval(refreshScreen, 1000 / window.frameRate);
-  //refreshScreen();
+  // setInterval(refreshScreen, 1000 / window.frameRate);
+  refreshScreen();
 });
 
 var refreshScreen = function(){
-  //setTimeout(refreshScreen, 1000 / window.frameRate);
+  setTimeout(refreshScreen, 1000 / window.frameRate);
   window.lastTenRefreshRates.unshift((new Date).getTime());
   window.lastTenRefreshRates.pop();
   var timeElapsed = (window.lastTenRefreshRates[0] - window.lastTenRefreshRates[9]) / 10;
@@ -27,11 +27,11 @@ var refreshScreen = function(){
  // var timeElapsed = (new Date).getTime() - startTime;
 
   //console.log(timeElapsed, 1000 / window.frameRate)
-  // if(timeElapsed > 1000 / window.frameRate && window.frameRate > 10) {
-  //   window.frameRate--;
-  // } else if(timeElapsed < 1000 / window.frameRate && window.frameRate < window.targetFrameRate) {
-  //   window.frameRate++;
-  // }
+  if(timeElapsed > 1000 / window.frameRate && window.frameRate > 10) {
+    window.frameRate--;
+  } else if(timeElapsed < 1000 / window.frameRate && window.frameRate < window.targetFrameRate) {
+    window.frameRate++;
+  }
   //console.log(window.frameRate);
 };
 
