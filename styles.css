@@ -57,6 +57,7 @@ table {
 html, body {
 	/* background-color: rgb(1, 36, 59); */
 	height: 100%;
+	overflow: hidden;
 }
 body {
 }
@@ -127,9 +128,11 @@ body {
 #wave {
 	height: 10%;
 	background-image: url(img/waves@2x.gc.png);
+	-webkit-background-size: auto 100%;
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left top;
+	margin-bottom: -1px;
 }
 #aquarium {
 	height: 70%;
